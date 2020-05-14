@@ -17,7 +17,7 @@ function Login(props){
     }
 
     const handleSignup = () =>{
-        API.signup({username,password, code})
+        API.signup({username,password, code}).then(data=>console.log(data))
     }
 
     
@@ -30,7 +30,7 @@ function Login(props){
     <div class="register-form">
         <h2>{login ? "Log In" : "Sign Up"}</h2>
           <div>
-            <input id="create-name" type="text" placeholder="enter your email" onChange = {(e)=>setUsername(e.target.value)} />
+            <input id="create-name" type="text" placeholder="enter your name" onChange = {(e)=>setUsername(e.target.value)} />
           </div>
             <input id="create-password" type="password" placeholder="enter your password" onChange = {(e)=>setPassword(e.target.value)}/><div/>
             {login ? "" : <><input type="text" placeholder="registration code" onChange = {(e)=>setCode(e.target.value)}/><div/></>}
@@ -59,3 +59,5 @@ export default Login;
     //         console.log(res.data);
     //     })
     // }
+
+

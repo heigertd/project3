@@ -14,7 +14,6 @@ import Login from './layout/Login';
 
 class App extends React.Component {
   state = { data: [], user: {} }
-
   componentDidMount() {
     API.getAllPatients().then(({ data }) => {
       this.setState({ data })
