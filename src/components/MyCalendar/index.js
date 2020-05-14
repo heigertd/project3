@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import Calendar from "react-calendar"
-const Calendar=()=> {
+const MyCalendar=()=> {
 
   const [date,setDate]=useState(new Date());
   const  onchange  = (date)=>{
@@ -9,7 +9,7 @@ const Calendar=()=> {
  
   return(
     <div>
-         <Calenar 
+         <Calendar 
           onChange={date.onChange}
           value={date}
         />
@@ -18,4 +18,4 @@ const Calendar=()=> {
 
   ) 
 }
-export default Calendar
+export default MyCalendar;
