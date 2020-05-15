@@ -1,32 +1,32 @@
 
 import React, { useEffect, useState } from "react";
 import API from '../utils/API';
-import { Link, useParams } from "react-router-dom";
-import Patient from './Patient';
+import {  useParams } from "react-router-dom";
+// import Patient from './Patient';
 import Container from '../components/Container/Container'
 import Calendar from "react-calendar"
-import {FormBtn} from '../components/Form'
+// import { FormBtn } from '../components/Form'
 import axios from "axios";
+import {Link} from 'react-router-dom'
 
-
-function LogBook() {
+function LogBook(props) {
   // created the use state to update the table
   const [patientData, setPatientData] = useState({});
-  const [age, setAge] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [firstName, setFirstName] = useState('')
+  // const [age, setAge] = useState('')
+  // const [lastName, setLastName] = useState('')
+  // const [firstName, setFirstName] = useState('')
 
-  const [address, setAddress] = useState('')
-  const [phone, setPhone] = useState('')
+  // const [address, setAddress] = useState('')
+  // const [phone, setPhone] = useState('')
   const [date, setDate] = useState('')
   const [formObject, setTableObject] = useState({
-    firstname:''
-   
+    firstname: ''
+
   })
-  const [patient, setUpdatePatient] = useState({})
+  // const [patient, setUpdatePatient] = useState({})
 
   const params = useParams()
-
+console.log(props.data)
   // using the api a data is collected from the database by id for a single patient
   useEffect(() => {
     API.getPatientLog(params.id).then(res => {
@@ -34,13 +34,13 @@ function LogBook() {
       setPatientData(res.data)
 
     })
-  },[])
-  
+    }, [])
+
 
     function ubdatePatient() {
       API.updatePatientById(formObject).then(res => {
         console.log(res.data)
-        setUpdatePatient(res.data)
+        setPatientData(res.data)
       })
         .catch(err => console.log(err));
     }
@@ -52,29 +52,30 @@ function LogBook() {
       console.log(event)
       const { name, value } = event.target;
       setTableObject({ ...formObject, [name]: value })
+      console.log(formObject)
     };
 
 
     // function for the calendar
 
-    function handleCalendarInput(date){
-     console.log(date);
-     setTableObject({...formObject,date})
+    function handleCalendarInput(date) {
+      console.log(date);
+      setTableObject({ ...formObject, date })
     }
 
     // When the form is submitted, use the API.saveBook method to save the book data
     // Then reload books from the database
     function handleTableChange(event) {
-      console.log("hello",patientData.id)
+      console.log("hello", patientData.id)
       event.preventDefault();
-      if (formObject.firstname ) {
-      axios.put(`http://localhost:8080/api/patient/${patientData.id}`, formObject)
-        // API.updatePatientById(
-        //   formObject,patientData.id
-        // )
+      // if (formObject.firstname) {
+        // axios.put(`http://localhost:8080/api/patient/${patientData.id}`, formObject)
+          API.updatePatientById(
+            formObject,patientData.id
+          )
           .then(res => ubdatePatient())
           .catch(err => console.log(err));
-      }
+      
     };
 
 
@@ -94,7 +95,7 @@ function LogBook() {
                   <th> Item</th>
                   <th>value</th>
                   <th> update</th>
-                  
+
 
 
                 </tr>
@@ -106,55 +107,55 @@ function LogBook() {
                 <tr>
                   <td>First Name</td>
                   <td>{patientData.firstname}</td>
-                  <td><input name="firstname" value={formObject.firstname }onChange={handleInputChange}></input></td>
-                 
+                  <td><input name="firstname" value={formObject.firstname} onChange={handleInputChange}></input></td>
+
 
                 </tr>
                 <tr>
                   <td>Last Name</td>
                   <td>{patientData.lastname}</td>
-                  <td><input  name="lastname" value={formObject.lastname } onChange={handleInputChange} ></input></td>
-                 
+                  <td><input name="lastname" value={formObject.lastname} onChange={handleInputChange} ></input></td>
+
                 </tr>
                 <tr>
                   <td>Age</td>
                   <td>{patientData.age}</td>
-                  <td><input  name="age" value={formObject.age } onChange={handleInputChange}     ></input></td>
-                  
+                  <td><input name="age" value={formObject.age} onChange={handleInputChange}     ></input></td>
+
                 </tr>
                 <tr>
                   <td>Address</td>
                   <td>{patientData.address}</td>
-                  <td><input name="address" value={formObject.address }  onChange={handleInputChange}      ></input></td>
-                  
+                  <td><input name="address" value={formObject.address} onChange={handleInputChange}      ></input></td>
+
                 </tr>
                 <tr>
                   <td>Phone</td>
                   <td>{patientData.phone_number}</td>
-                  <td><input name="phnoe_number "  value={formObject.phne_number }  onChange={handleInputChange}     ></input></td>
-                  
+                  <td><input name="phnoe_number " value={formObject.phone_number} onChange={handleInputChange}     ></input></td>
+
                 </tr>
                 <tr>
                   <td>Food</td>
                   <td>{patientData.isFoodEaten}</td>
                   <td>
-                    <label><input class="with-gap" name="group3" type="radio" checked /><span>True</span></label>
+                    <label><input name="isFoodEaten" value={(checked)=>formObject.isFoodEaten} class="with-gap" name="group3" type="radio" checked /><span>True</span></label>
                   </td>
                   <td>
-                    <label><input class="with-gap" name="group3" type="radio" checked /><span>False</span></label>
+                    <label><input  name="isFoodEaten" value={formObject.isFoodEaten} class="with-gap" name="group3" type="radio" checked /><span>False</span></label>
                   </td>
 
                 </tr>
                 <tr>
                   <td>patientReview</td>
                   <td>{patientData.patientReview}</td>
-                  <td><input  name="patientReview "  value={formObject.patientReview } onChange={handleInputChange} id="textarea1" class="materialize-textarea" ></input></td>
-                  
+                  <td><input name="patientReview " value={formObject.patientReview} onChange={handleInputChange}  ></input></td>
+
                 </tr>
                 <tr>
                   <td>Doctors Appointment</td>
                   <td>{patientData.date}</td>
-                  <td><Calendar name ="calendar"onChange={handleCalendarInput} /></td>
+                  <td><Calendar name="calendar" onChange={handleCalendarInput} /></td>
                 </tr>
 
 
@@ -164,18 +165,18 @@ function LogBook() {
 
               {/* <button class="btn waves-effect waves-light" type="submit" name="action"    >Submit    
     <i class="material-icons right">send</i>
-  </button> */}   
+  </button> */}
               {/* <FormBtn
                 handleTableChange={handleTableChange}>
 
                   UbdateProfile
               </FormBtn> */}
             </table    >
-            <button onClick={handleTableChange}>Go Back</button>
+            <button class="btn waves-effect dangerous" onClick={handleTableChange}>Submit</button>
 
-            <Link to="/patient">
-              <button>go back</button>
-            </Link>
+             <span><Link to="/patient">
+              <button class="btn waves-effect dangerous">go back</button>
+            </Link> </span>
 
 
           </div>
@@ -209,6 +210,6 @@ function LogBook() {
 
 
       </div>
-    )
+    );
   }
 export default LogBook;
