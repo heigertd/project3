@@ -16,10 +16,15 @@ function Login(props){
         API.login({username,password}).then(data=> console.log(data))
     }
 
+  
     const handleSignup = () =>{
-        API.signup({username,password, code}).then(data=>console.log(data))
+        API.signup({username,password, code}).then(data=>{
+          console.log(data)
+        })
     }
 
+
+    const 
     
     return(
     
@@ -109,3 +114,4 @@ export default Login;
         // </div>
         // )
         
+

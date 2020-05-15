@@ -29,6 +29,7 @@ function LogBook() {
 
   // using the api a data is collected from the database by id for a single patient
   useEffect(() => {
+
     API.getPatientLog(params.id).then(res => {
       console.log(res.data)
       setPatientData(res.data)
