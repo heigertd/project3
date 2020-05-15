@@ -9,30 +9,33 @@ export default ({ data, user }) => {
   console.log(user);
 
   const  userChecking=()=> {
-    if (user) {
-      return(
-        <>
-      <div >
-       
-        <h1>HELLO WORLD</h1>
-      </div>
-        <div className='row'>
-          {activePatient.length ? (
-            <Log patient={activePatient} setActivePatient={setActivePatient} />
-          ) : (
-              data.map(patientData => (
-                <Secound
-                  patientData={patientData}
-                  goToLogbook={goToLogbook}
-                />
-              ))
-            )}
-        </div> 
-        </>)
+    if (user==='Incorrect password!') {
+      return <h1>  Incorrect password</h1>} else if (user===''){
+        return <h1>please signup</h1>
+      }else {
+        return(
+          <>
+        <div >
+         
+          <h1>HELLO WORLD</h1>
+        </div>
+          <div className='row'>
+            {activePatient.length ? (
+              <Log patient={activePatient} setActivePatient={setActivePatient} />
+            ) : (
+                data.map(patientData => (
+                  <Secound
+                    patientData={patientData}
+                    goToLogbook={goToLogbook}
+                  />
+                ))
+              )}
+          </div> 
+          </>)
+      }
+     
 
-              }else {
-    return   <h1>hi</h1>
-    }
+    
   }
 
   console.log("hi",user)
