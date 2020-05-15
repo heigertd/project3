@@ -32,11 +32,20 @@ export default () =>
           </li>
           <li className="nav-item">
             <Link
-              to="/logbook"
-              className={window.location.pathname === "/logbook" ? "nav-link active" : "nav-link"}
+              to="/patient/:id"
+              className={window.location.pathname === "/manager"? "nav-link active" : "nav-link"}
               
             >
-              Logbook
+             Manager
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/employee"
+              className={window.location.pathname === "/employee" ? "nav-link active" : "nav-link"}
+              
+            >
+             Employee
             </Link>
           </li>
         </ul>
