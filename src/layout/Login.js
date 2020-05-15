@@ -15,39 +15,50 @@ function Login(props) {
 
   const handleLogin = () => {
     console.log(username, password)
-    API.login({ username, password }).then(data => props.isLogedin(data.data))
-    history.push("/patient")
-  }
+    API.login({ username, password }).then(data => { 
+      props.isLogedin(data.data)
 
-  const handleSignup = () => {
-    API.signup({ username, password, code }).then(data => console.log(data))
-  }
+    // history.push("/patient")
+    if (data.data === "Incorrect password!") {
+      console.log('wrongpassword')
+    } else if (data.data ==='cannot find user!'){
+      console.log('no user')
+      // history.push("/patient")
+    }else {
+     history.push("/patient")
+    }
+  })
+}
 
-
-
-  return (
-
-    <div class="login-page container">
-      <div className="row">
-
-        <div className='col s12'>
-          <div class="register-form">
-            <h2>{login ? "Log In" : "Sign Up"}</h2>
-            <div>
-              <input id="create-name" type="text" placeholder="enter your name" onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <input id="create-password" type="password" placeholder="enter your password" onChange={(e) => setPassword(e.target.value)} /><div />
-            {login ? "" : <><input type="text" placeholder="registration code" onChange={(e) => setCode(e.target.value)} /><div /></>}
+const handleSignup = () => {
+  API.signup({ username, password, code }).then(data => console.log(data))
+}
 
 
-            <button onClick={login ? handleLogin : handleSignup} id="create-acc">{login ? "Log In" : "Submit"}</button>
+
+return (
+
+  <div class="login-page container">
+    <div className="row">
+
+      <div className='col s12'>
+        <div class="register-form">
+          <h2>{login ? "Log In" : "Sign Up"}</h2>
+          <div>
+            <input id="create-name" type="text" placeholder="enter your name" onChange={(e) => setUsername(e.target.value)} />
+          </div>
+          <input id="create-password" type="password" placeholder="enter your password" onChange={(e) => setPassword(e.target.value)} /><div />
+          {login ? "" : <><input type="text" placeholder="registration code" onChange={(e) => setCode(e.target.value)} /><div /></>}
 
 
-            {login ? <p class="message">Not registered?
+          <button onClick={login ? handleLogin : handleSignup} id="create-acc">{login ? "Log In" : "Submit"}</button>
+
+
+          {login ? <p class="message">Not registered?
             <a onClick={() => setLogin(false)} href="#">
 
 
-                Create an account</a></p> : <p class="message">Already registered? <a onClick={() => setLogin(true)} href="#">Sign In</a>  </p>
+              Create an account</a></p> : <p class="message">Already registered? <a onClick={() => setLogin(true)} href="#">Sign In</a>  </p>
 
 
 
@@ -62,15 +73,15 @@ function Login(props) {
 
 
 
-            }
-          </div>
+          }
         </div>
-
       </div>
 
-
     </div>
-  )
+
+
+  </div>
+)
 
 
 }
