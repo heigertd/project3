@@ -51,13 +51,6 @@ function Login(props){
 export default Login;
 
 
-// this code is for authentication
 
-    // const handleSessionBtnClick = event=>{
-    //     event.preventDefault();
-    //     API.readSessions().then(res=>{
-    //         console.log(res.data);
-    //     })
-    // }
 
 

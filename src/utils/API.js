@@ -12,8 +12,10 @@ getPatientLog: (id)=> axios.get(`${BASE_URL}/patient/${id}`),
    axios.post(`${BASE_URL}/` + id),
 
 // creating a route that appdates the patients ifo
-
-updatePatientById:(data,id)=>axios.put(`${BASE_URL}/patient/${id}`, data),
+updatePatientById:(data,id)=>{
+  console.log(data,id)
+  
+ return axios.put(`${BASE_URL}/api/patient/${id}`, data)},
 login: (data)=> axios.post(`${BASE_URL}/api/login`, data),
 signup: (data)=> axios.post(`${BASE_URL}/api/signup`, data),
 save:(data)=>axios.put(`${BASE_URL}/api/save`),
