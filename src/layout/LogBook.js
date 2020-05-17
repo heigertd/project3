@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import API from '../utils/API';
 import {  useParams } from "react-router-dom";
 // import Patient from './Patient';
+import Food from './Food'
 import Container from '../components/Container/Container'
 import Calendar from "react-calendar"
 // import { FormBtn } from '../components/Form'
@@ -20,8 +21,8 @@ function LogBook(props) {
   // const [phone, setPhone] = useState('')
   const [date, setDate] = useState('')
   const [formObject, setTableObject] = useState({
-    firstname: ''
-
+    firstname: '',
+    isFoodEaten:false
   })
   // const [patient, setUpdatePatient] = useState({})
 
@@ -77,6 +78,14 @@ console.log(props.data)
           .catch(err => console.log(err));
       
     };
+
+    function handleCheckbox(){
+      setTableObject({...formObject,
+       isFoodEaten: !formObject.isFoodEaten
+      
+      })
+  
+    }
 
 
 
@@ -136,22 +145,27 @@ console.log(props.data)
 
                 </tr>
                 <tr>
-                  <td>Food</td>
+                  {/* <td>Food</td>
                   <td>{patientData.isFoodEaten}</td>
                   <td>
                     <label><input name="isFoodEaten" value={(checked)=>formObject.isFoodEaten} class="with-gap" name="group3" type="radio" checked /><span>True</span></label>
                   </td>
                   <td>
                     <label><input  name="isFoodEaten" value={formObject.isFoodEaten} class="with-gap" name="group3" type="radio" checked /><span>False</span></label>
-                  </td>
+                  </td> */}
+
+<td>
+                  <td>Did the patient eat Food</td>
+                  <td>{patientData.isFoodEaten}</td>
+                  
+                
+                  <td> <Food     name="isFoodEaten" isChecked={formObject.isFoodEaten} handleCheckbox={handleCheckbox}></Food></td>
+                  
+
+                </td>
 
                 </tr>
-                <tr>
-                  <td>patientReview</td>
-                  <td>{patientData.patientReview}</td>
-                  <td><input name="patientReview " value={formObject.patientReview} onChange={handleInputChange}  ></input></td>
-
-                </tr>
+                
                 <tr>
                   <td>Doctors Appointment</td>
                   <td>{patientData.date}</td>
