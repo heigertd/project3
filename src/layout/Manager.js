@@ -1,5 +1,5 @@
 import React from 'react'
-import LogBook from './Logbook'
+import LogBook from './LogBook'
 export default function Manager() {
   return (
     <div>

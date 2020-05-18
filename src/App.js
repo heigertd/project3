@@ -7,9 +7,9 @@ import Navbar from './components/Navbar';
 import Patient from './layout/Patient';
 import API from './utils/API';
 import Footer from "./components/Footer";
-import LogBook from './layout/Logbook'
+import LogBook from './layout/LogBook'
 import Login from './layout/Login';
-import Employee from './layout/Employee';
+import Employee from './layout/employee';
 import Manager from './layout/Manager';
 
 class App extends React.Component {

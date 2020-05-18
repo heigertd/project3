@@ -16,7 +16,7 @@ updatePatientById:(data,id)=>{
   console.log(data,id)
   
  return axios.put(`${BASE_URL}/api/patient/${id}`, data)},
-login: (data)=> axios.post(`${BASE_URL}/api/login`, data),
+login: (data)=> axios.post(`${BASE_URL}/login`, data),
 signup: (data)=> axios.post(`${BASE_URL}/api/signup`, data),
 save:(data)=>axios.put(`${BASE_URL}/api/save`),
 saveChange:function(Data){
