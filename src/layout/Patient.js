@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Secound from './Secound';
-import Log from './Logbook'
+import Log from './LogBook'
 import { useHistory } from "react-router-dom"
 
 export default ({ data, user }) => {
