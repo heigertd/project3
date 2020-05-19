@@ -27,6 +27,7 @@ export default {
   getLogInbtn: (id) =>
     axios.post(`${BASE_URL}/` + id),
 
+
   // creating a route that appdates the patients ifo
   updatePatientById: (data, id) => {
     console.log(data, id)
@@ -42,6 +43,7 @@ export default {
   saveChange: function (Data) {
     return axios.put(`${BASE_URL}/api/patient`, Data)
   },
+
 
   Logout: () => axios.destroy(`${BASE_URL}/api/logout`),
   getCurrentUser: () => axios.get('/api/currentuser')
