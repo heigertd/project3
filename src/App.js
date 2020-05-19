@@ -68,7 +68,7 @@ this.setState({
         <Route exact path="/patient" component={Patient} />
         <Route exact path="/manager" component={AddManager}/>
         <Route exact path="/employee" component={AddEmployee}/>
-        <Route exact path="/patients" component={AddPatient}/>
+        <Route exact path="/newEntry" component={AddPatient}/>
         <Route exact path="/patient/:id" component={LogBook} />
         <Route exact path="/LogBook/:id" component={Employee} />
         {/* <Route exact path="/patient:id" component={Patient} /> */}
@@ -98,3 +98,7 @@ this.setState({
 
 
 export default App;
+
+
+
+
