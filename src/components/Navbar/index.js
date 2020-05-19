@@ -36,7 +36,7 @@ export default (props) => {
             Logbook
             </Link>:""}
           </li>
-      {props.currentUser.isAdmin ?
+      {props.currentUser.user && props.currentUser.user.isAdmin ?
         <>
           <li className="nav-item">
           <Link
@@ -59,14 +59,14 @@ export default (props) => {
           </li>
           <li className="nav-item">
           <Link
-              to="/patients"
+              to="/newEntry"
       
             >
              Addpatient
             </Link>:""}
           </li>
           <li className="nav-item">
-          {props.currentUser? <Link
+          {props.currentUser.user? <Link
               to="/manager"
               className={window.location.pathname === "/manager" ? "nav-link active" : "nav-link"}
 
@@ -81,7 +81,7 @@ export default (props) => {
             </Link>
           </> : ""}
 
-          {props.currentUser ? <li className="nav-item">
+          {props.currentUser.user ? <li className="nav-item">
           <Link
               to="/"
               className="nav-link">

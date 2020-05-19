@@ -14,15 +14,15 @@ export default {
     return axios.post(`${BASE_URL}/api/employee`, employeeData, { withCredentials: true })
   },
   createPatient: function (patientData) {
-    return axios.post(`${BASE_URL}/api/patient`, patientData, { withCredentials: true })
+    console.log("createPatient")
+    return axios.post(`${BASE_URL}/newEntry`, patientData, { withCredentials: true })
   },
   createManager: function (managerData) {
     return axios.post(`${BASE_URL}/api/manager`, managerData, { withCredentials: true })
   },
 
-  createPatient: function (patientData) {
-    return axios.post(`${BASE_URL}/api/patient`, patientData, { withCredentials: true })
-  },
+  
+ 
   // login btn
   getLogInbtn: (id) =>
     axios.post(`${BASE_URL}/` + id),
