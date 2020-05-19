@@ -1,6 +1,7 @@
 import React from 'react';
 // import Secound from './layout/Secound'
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 // import './App.css';
 
 import Navbar from './components/Navbar';
@@ -11,65 +12,72 @@ import LogBook from './layout/Logbook'
 import Login from './layout/Login';
 import Employee from './layout/Employee';
 import Manager from './layout/Manager';
+import AddManager from './layout/AddManager';
+import AddPatient from './layout/AddPatients';
+import AddEmployee from './layout/AddEmployee';
+
+
+
 
 class App extends React.Component {
   state = { data: [], user: {} }
 
+  componentDidUpdate = () => console.log('this is current user -', this.state.user)
 
-isLogedin=(userData)=>{
-  console.log(userData)
-  this.setState({
-    user:userData
-  })
-}
-
-
+  isLogedin = (userData) => {
+    console.log(userData)
+    this.setState({
+      user: userData
+    })
+    localStorage.setItem('currentUser', JSON.stringify(userData), err=>console.log(err|| "user saved"))
+  }
 
   componentDidMount() {
+    localStorage.getItem('currentUser') ? this.setState(JSON.parse(localStorage.getItem('currentUser'))) :
     API.getAllPatients().then(({ data }) => {
       this.setState({ data })
       console.log(data)
     })
   }
- 
+
 
 
 
   render() {
     return (
-      <Router>
-        <Navbar />
-        <Route exact path={["/", "/login"]} component={() => <Login isLogedin={this.isLogedin}/>} />
+      
+  <Router> 
+   
+        <Navbar currentUser={this.state.user} />
+        <Route exact path={["/", "/login"]} component={() => <Login isLogedin={this.isLogedin} />} />
         <Route exact path="/logbook/:id" component={() => <LogBook data={this.state.user} />} />
         <Route exact path="/patient/:id" component={Manager} />
+        <Route exact path="/manager/" component={AddManager}/>
+        <Route exact path="/employee" component={AddEmployee}/>
+        <Route exact path="/patients/" component={AddPatient}/>
         <Route exact path="/patient/:id" component={LogBook} />
         <Route exact path="/logbook/:id" component={Employee} />
         {/* <Route exact path="/patient:id" component={Patient} /> */}
-        <Route exact path="/patient" component={() => <Patient data={this.state.data}user={this.state.user}/>} />
+        <Route exact path="/patient" component={() => <Patient data={this.state.data} user={this.state.user} />} />
         {/* <Route exact path="/patient" component={Secound}/> */}
         <Footer />
-      </Router>
+</Router> 
+     
 
-      // ===========
-      // <BrowserRouter history={history}>
-      //   <Switch>
-      //     <Navbar />
-      //     <Route exact path={["/", "/login"]} component={Login} />
-      //     <Route exact path="/logbook/:id" component={LogBook} />
-      //     <Route exact path="/patient/:id" component={Manager} />
-      //     <Route exact path="/patient/:id" component={LogBook} />
-      //     <Route exact path="/logbook/:id" component={Employee} />
-      //     {/* <Route exact path="/patient:id" component={Patient} /> */}
-      //     <Route exact path="/patient" component={() => <Patient data={this.state.data} />} />
-      //     {/* <Route exact path="/patient" component={Secound}/> */}
-      //     <Footer />
 
-      //   </Switch>
-      // </BrowserRouter>
 
 
     );
+
+
+ 
+
+
+
   }
+
+
+
 
 }
 

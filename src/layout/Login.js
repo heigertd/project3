@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import "../components/LogInBtn/style.css";
 import { Link, useHistory } from 'react-router-dom'
-//
-// import LogInBtn from '../LogInBtn';
+
 import API from "../utils/API"
 
 function Login(props) {
@@ -16,15 +15,18 @@ function Login(props) {
   const handleLogin = () => {
     console.log(username, password)
     API.login({ username, password }).then(data => { 
-      props.isLogedin(data.data)
+      // props.isLogedin(data.data)
 
     // history.push("/patient")
     if (data.data === "Incorrect password!") {
       console.log('wrongpassword')
     } else if (data.data ==='cannot find user!'){
       console.log('no user')
+     
       // history.push("/patient")
     }else {
+      props.isLogedin(data.data)
+      console.log("success")
      history.push("/patient")
     }
   })
