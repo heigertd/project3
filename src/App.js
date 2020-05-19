@@ -10,7 +10,7 @@ import API from './utils/API';
 import Footer from "./components/Footer";
 import LogBook from './layout/LogBook'
 import Login from './layout/Login';
-import Employee from './layout/Employee';
+import Employee from './layout/employee';
 import Manager from './layout/Manager';
 import AddManager from './layout/AddManager';
 import AddPatient from './layout/AddPatients';
@@ -20,7 +20,7 @@ import AddEmployee from './layout/AddEmployee';
 
 
 class App extends React.Component {
-  state = { data: {} ,user: {} }
+  state = { data:{} ,user: {} }
 
   componentDidUpdate = () => console.log('this is current user -', this.state.user)
 
@@ -30,15 +30,27 @@ class App extends React.Component {
       user: userData,
       
     })
-    localStorage.setItem('currentUser', JSON.stringify(userData), err=>console.log(err|| "user saved"))
+    localStorage.setItem('currentUser', JSON.stringify(userData))
   }
 
   componentDidMount() {
-    localStorage.getItem('currentUser') ? this.setState(JSON.parse(localStorage.getItem('currentUser'))) :
-    API.getAllPatients().then(({ data }) => {
-      this.setState({data })
-      console.log(data)
-    }).catch(err =>console.log(err))
+    console.log("componentDidMount")
+   const currentUser= JSON.parse(localStorage.getItem('currentUser') )
+this.setState({
+  user:currentUser.user
+})
+
+
+  //  const currentUser= localStorage.getItem('currentUser') ? this.setState(JSON.parse(localStorage.getItem('currentUser'))) :
+   
+   API.getAllPatients()
+      .then(res=>{
+       this.setState({data:res.data})
+      }).catch(err=>console.log(err))
+    // API.getAllPatients().then(({ data }) => {
+    //   this.setState({data })
+    //   console.log(data)
+    // }).catch(err =>console.log(err))
   }
 
 
@@ -53,10 +65,10 @@ class App extends React.Component {
         <Route exact path={["/", "/login"]} component={() => <Login isLogedin={this.isLogedin} />} />
         <Route exact path="/logbook/:id" component={() => <LogBook data={this.state.user} />} />
         <Route exact path="/patient/:id" component={Manager} />
-        <Route exact path="/patient/" component={Patient} />
-        <Route exact path="/manager/" component={AddManager}/>
+        <Route exact path="/patient" component={Patient} />
+        <Route exact path="/manager" component={AddManager}/>
         <Route exact path="/employee" component={AddEmployee}/>
-        <Route exact path="/patients/" component={AddPatient}/>
+        <Route exact path="/patients" component={AddPatient}/>
         <Route exact path="/patient/:id" component={LogBook} />
         <Route exact path="/LogBook/:id" component={Employee} />
         {/* <Route exact path="/patient:id" component={Patient} /> */}
