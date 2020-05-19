@@ -1,58 +1,116 @@
-import React from 'react';
+
+
+
+
+  import React from 'react';
 import {Link} from "react-router-dom";
 
-export default () =>
+export default (props) => {
+  console.log("props.currentUser",props.currentUser)
+  return(
   <>
     <nav>
       <div class="nav-wrapper">
-      
+
         <a href="#" className="brand-logo center">DAYA App</a>
 
 <div>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/login"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
+          {props.currentUser.user? <h3>Welcome, {props.currentUser.user.username}</h3>:""}
+         
+          </li>
+          <li className="nav-item">
+          {props.currentUser? <Link
+              to="/patient"
+              className={window.location.pathname === "/patient" ? "nav-link active" : "nav-link"}
             >
+              Patient
+            </Link>:""}
+          </li>
+<li className="nav-item">
+              <Link
+              to="/patients"
+              className="nav-link"
+            >
+            Logbook
+            </Link>:""}
+          </li>
+      {props.currentUser.isAdmin ?
+        <>
+          <li className="nav-item">
+          <Link
+              to="/patients"
+              className="nav-link"
+            >
+             Manager
+            </Link>
+          </li>
+          
+
+          <li className="nav-item">
+          <Link
+              to="/employee"
+        
+
+            >
+             AddEmployee
+            </Link>
+          </li>
+          <li className="nav-item">
+          <Link
+              to="/patients"
+      
+            >
+             Addpatient
+            </Link>:""}
+          </li>
+          <li className="nav-item">
+          {props.currentUser? <Link
+              to="/manager"
+              className={window.location.pathname === "/manager" ? "nav-link active" : "nav-link"}
+
+            >
+            AddManager
+            </Link>:""}
+          </li>
+          <Link
+              to="/"
+              className="nav-link">
+              Log Out
+            </Link>
+          </> : ""}
+
+          {props.currentUser ? <li className="nav-item">
+          <Link
+              to="/"
+              className="nav-link">
+              Log Out
+            </Link>
+          </li> : <>
+          <li className="nav-item">
+          <Link
+              to="/"
+              className="nav-link">
               Login 
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              to="/patient"
-              className={window.location.pathname === "/patient" ? "nav-link active" : "nav-link"}
+              to="signup"
+             className="nav-link"
             >
-              Patient
+          Sign Up
             </Link>
           </li>
-          <li className="nav-item">
-            <Link
-              to="/patient/:id"
-              className={window.location.pathname === "/manager"? "nav-link active" : "nav-link"}
-              
-            >
-             Manager
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/employee"
-              className={window.location.pathname === "/employee" ? "nav-link active" : "nav-link"}
-              
-            >
-             Employee
-            </Link>
-          </li>
+          </>}
+          
+
         </ul>
 
       </div>
       </div>
     </nav>
   </>
-
-
+  )}
+          
