@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Secound from './Secound';
-import Log from './Logbook'
+import Log from './LogBook'
 import { useHistory } from "react-router-dom"
 
-export default ({ data, user }) => {
+export default ({ data, user ,patientData}) => {
   // const [activePatient, setActivePatient] = useState(null)
   const [activePatient, setActivePatient] = useState([]);
+  // const [patientData ,setPatientData]=useState([])
   console.log(user);
+   console.log(patientData)
 
   const  userChecking=()=> {
     if (user==='Incorrect password!') {

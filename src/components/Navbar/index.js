@@ -30,7 +30,7 @@ export default (props) => {
           </li>
 <li className="nav-item">
               <Link
-              to="/employee"
+              to="/patients"
               className="nav-link"
             >
             Logbook
@@ -40,7 +40,7 @@ export default (props) => {
         <>
           <li className="nav-item">
           <Link
-              to="/manager"
+              to="/patients"
               className="nav-link"
             >
              Manager
@@ -50,7 +50,7 @@ export default (props) => {
 
           <li className="nav-item">
           <Link
-              to="/patient"
+              to="/employee"
         
 
             >
@@ -59,7 +59,7 @@ export default (props) => {
           </li>
           <li className="nav-item">
           <Link
-              to="/manger"
+              to="/patients"
       
             >
              Addpatient
@@ -74,6 +74,11 @@ export default (props) => {
             AddManager
             </Link>:""}
           </li>
+          <Link
+              to="/"
+              className="nav-link">
+              Log Out
+            </Link>
           </> : ""}
 
           {props.currentUser ? <li className="nav-item">
@@ -108,4 +113,4 @@ export default (props) => {
     </nav>
   </>
   )}
-
+          

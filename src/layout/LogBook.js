@@ -12,19 +12,14 @@ import { Link } from 'react-router-dom'
 
 function LogBook(props) {
   // created the use state to update the table
-  const [patientData, setPatientData] = useState({});
-  // const [age, setAge] = useState('')
-  // const [lastName, setLastName] = useState('')
-  // const [firstName, setFirstName] = useState('')
 
-  // const [address, setAddress] = useState('')
-  // const [phone, setPhone] = useState('')
+  
   const [date, setDate] = useState('')
   const [formObject, setTableObject] = useState({
     firstname: '',
     isFoodEaten: false
   })
-  // const [patient, setUpdatePatient] = useState({})
+  const [patientData, setPatientData] = useState({})
 
   const params = useParams()
   console.log(props.data)

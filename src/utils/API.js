@@ -37,5 +37,8 @@ logout:function(){
 saveChange:function(Data){
   return axios.put(`${BASE_URL}/api/patient`,Data)
 },
+
+Logout:()=>axios.destroy(`${BASE_URL}/api/logout`),
 getCurrentUser: ()=> axios.get('/api/currentuser')
   }
+ 
