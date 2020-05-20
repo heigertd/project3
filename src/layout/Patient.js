@@ -19,10 +19,6 @@ export default ({ data, user, patientData }) => {
     } else {
       return (
         <>
-          <div >
-
-            <h1>DAYA</h1>
-          </div>
           <div className='row'>
             {activePatient.length ? (
               <Log patient={activePatient} setActivePatient={setActivePatient} />

@@ -14,7 +14,7 @@ import { render } from "@testing-library/react";
 function LogBook(props) {
   // created the use state to update the table
 
-  
+
   const [date, setDate] = useState('')
   const [formObject, setTableObject] = useState({
     firstname: '',
@@ -52,21 +52,21 @@ function LogBook(props) {
     setTableObject({ ...formObject, [name]: value })
     console.log(formObject)
   };
-//  adding prompts
+  //  adding prompts
 
-// function handlepropmts1(){
-//   {patientData.isFoodEaten? propmt("patintData.firstname ate took meal"): prompt("patintData.firstname did not take food")
-  
-//   }
-// }
+  // function handlepropmts1(){
+  //   {patientData.isFoodEaten? propmt("patintData.firstname ate took meal"): prompt("patintData.firstname did not take food")
 
-// function handlepropmts1(){
-//   {patientData.isMedicineTaken? propmt("patintData.firstname  took Medicine"): prompt("patintData.firstname did not take Medicine")
-  
-//   }
-// }
+  //   }
+  // }
 
-  
+  // function handlepropmts1(){
+  //   {patientData.isMedicineTaken? propmt("patintData.firstname  took Medicine"): prompt("patintData.firstname did not take Medicine")
+
+  //   }
+  // }
+
+
 
   // function for the calendar
 
@@ -75,7 +75,7 @@ function LogBook(props) {
     setTableObject({ ...formObject, date })
   }
 
- 
+
   function handleTableChange(event) {
     console.log("hello", patientData.id)
     event.preventDefault();
@@ -98,13 +98,7 @@ function LogBook(props) {
 
   }
 
-
-
-
   return (
-
-
-
     <div className="container" >
       <div className="row">
         <div className="col s6">
@@ -115,9 +109,6 @@ function LogBook(props) {
                 <th> Item</th>
                 <th>value</th>
                 <th> update</th>
-
-
-
               </tr>
 
 
@@ -157,14 +148,7 @@ function LogBook(props) {
 
               </tr>
               <tr>
-                {/* <td>Food</td>
-                  <td>{patientData.isFoodEaten}</td>
-                  <td>
-                    <label><input name="isFoodEaten" value={(checked)=>formObject.isFoodEaten} class="with-gap" name="group3" type="radio" checked /><span>True</span></label>
-                  </td>
-                  <td>
-                    <label><input  name="isFoodEaten" value={formObject.isFoodEaten} class="with-gap" name="group3" type="radio" checked /><span>False</span></label>
-                  </td> */}
+
 
                 <td>
                   <td>Did the patient eat Food</td>
@@ -189,14 +173,6 @@ function LogBook(props) {
             </tbody>
 
 
-            {/* <button class="btn waves-effect waves-light" type="submit" name="action"    >Submit    
-    <i class="material-icons right">send</i>
-  </button> */}
-            {/* <FormBtn
-                handleTableChange={handleTableChange}>
-
-                  UbdateProfile
-              </FormBtn> */}
           </table    >
           <button class="btn waves-effect dangerous" onClick={handleTableChange}>Submit</button>
 
