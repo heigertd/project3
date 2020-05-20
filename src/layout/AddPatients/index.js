@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom"
 import API from "../../utils/API"
-// import "./style.css"
+import "./style.css"
 
 
 
@@ -11,21 +11,23 @@ function AddPatient(props) {
     firstname: '',
     lastname: '',
     age: '',
+
     email: '',
     address: '',
     doctor_appointment: '',
-    medicine_type: ''
-
+    isMedicine: '',
+    isFoodEaten:'',
+    patientReview:''
 
 
   })
   const history = useHistory();
-  // useEffect(() => {
-  //   if (!props.currentUser) {
-  //     history.push('/login')
-  //   }
+  useEffect(() => {
+    if (!props.currentUser) {
+      history.push('/login')
+    }
 
-  // }, [props.currentUser])
+  }, [props.currentUser])
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -59,7 +61,7 @@ function AddPatient(props) {
 
   }
   return (
-    <div className="AddPatient">
+    <div className="  addpatient">
       <h1>Register patient</h1>
       <form class="col s12">
 
@@ -132,7 +134,7 @@ function AddPatient(props) {
           <br />
           <label for="date"></label>
         </div>
-        <button onClick={handleFormSubmit}></button>
+        <button onClick={handleFormSubmit}> Submit</button>
       </form>
 
     </div>

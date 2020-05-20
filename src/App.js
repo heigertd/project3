@@ -1,6 +1,8 @@
 import React from 'react';
 // import Secound from './layout/Secound'
 import { BrowserRouter as Router, Route } from "react-router-dom";
+ 
+ 
 
 // import './App.css';
 
@@ -37,7 +39,9 @@ class App extends React.Component {
     console.log("componentDidMount")
    const currentUser= JSON.parse(localStorage.getItem('currentUser') )
 this.setState({
-  user:currentUser.user
+  
+  // user:currentUser.user
+ 
 })
 
 
@@ -47,6 +51,10 @@ this.setState({
       .then(res=>{
        this.setState({data:res.data})
       }).catch(err=>console.log(err))
+
+
+
+
     // API.getAllPatients().then(({ data }) => {
     //   this.setState({data })
     //   console.log(data)
@@ -58,11 +66,12 @@ this.setState({
 
   render() {
     return (
-      
+   
   <Router> 
    
         <Navbar currentUser={this.state.user} />
-        <Route exact path={["/", "/login"]} component={() => <Login isLogedin={this.isLogedin} />} />
+       
+        <Route exact path={[ "/","/login"]} component={() => <Login isLogedin={this.isLogedin} />} />
         <Route exact path="/logbook/:id" component={() => <LogBook data={this.state.user} />} />
         <Route exact path="/patient/:id" component={Manager} />
         <Route exact path="/patient" component={Patient} />
@@ -74,6 +83,7 @@ this.setState({
         {/* <Route exact path="/patient:id" component={Patient} /> */}
         <Route exact path="/patient" component={() => <Patient data={this.state.data} user={this.state.user} />} />
         {/* <Route exact path="/patient" component={Secound}/> */}
+       
         <Footer />
 </Router> 
      
