@@ -9,6 +9,7 @@ import Calendar from "react-calendar"
 // import { FormBtn } from '../components/Form'
 import axios from "axios";
 import { Link } from 'react-router-dom'
+import { render } from "@testing-library/react";
 
 function LogBook(props) {
   // created the use state to update the table
@@ -51,7 +52,21 @@ function LogBook(props) {
     setTableObject({ ...formObject, [name]: value })
     console.log(formObject)
   };
+//  adding prompts
 
+// function handlepropmts1(){
+//   {patientData.isFoodEaten? propmt("patintData.firstname ate took meal"): prompt("patintData.firstname did not take food")
+  
+//   }
+// }
+
+// function handlepropmts1(){
+//   {patientData.isMedicineTaken? propmt("patintData.firstname  took Medicine"): prompt("patintData.firstname did not take Medicine")
+  
+//   }
+// }
+
+  
 
   // function for the calendar
 
@@ -195,7 +210,7 @@ function LogBook(props) {
           <table>
             <thead>
               <tr>
-                <th>Logs</th>
+                <th></th>
                 <th>5/11/2020</th>
               </tr>
             </thead>

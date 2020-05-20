@@ -1,13 +1,13 @@
 import React ,{useState,useEffect}from 'react'
 import API  from '/components/utils/API'
 function DetailPage() {
-  const [patientState,setPatienState]=useState({});
+  const [patientData,setPatientData]=useState({});
   useEffect(()=>{
     loadPaitent()
   }, [])
   function loadPaitent(){
     API.getPatientLog()
-    .then(res =>setPatienState((res.data)) )
+    .then(res =>PatientData((res.data)) )
      .catch(err=>console.log(err))
   }
 // function DetailPage({patient}) {
@@ -19,10 +19,10 @@ function DetailPage() {
         <thead>
           <tr>
           <th></th>
-          <th>{patientState.firstname}</th>
-            <th>{patientState.lastname}</th>
-            <th>{patientState.phone_number}</th> 
-            <th>{patientState.email}</th>
+          <th>{patientData.firstname}</th>
+            <th>{patientData.lastname}</th>
+            <th>{patientData.phone_number}</th> 
+            <th>{patientData.email}</th>
 
           </tr>
         </thead>

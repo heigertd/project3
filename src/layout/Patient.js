@@ -21,7 +21,7 @@ export default ({ data, user, patientData }) => {
         <>
           <div >
 
-            <h1>HELLO WORLD</h1>
+            <h1>DAYA</h1>
           </div>
           <div className='row'>
             {activePatient.length ? (
