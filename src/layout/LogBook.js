@@ -14,7 +14,7 @@ import { render } from "@testing-library/react";
 function LogBook(props) {
   // created the use state to update the table
 
-  
+
   const [date, setDate] = useState('')
   const [formObject, setTableObject] = useState({
     firstname: '',
@@ -50,23 +50,29 @@ function LogBook(props) {
     const { name, value } = event.target;
     setTableObject({ ...formObject, [name]: value })
   };
-//  adding prompts
-// function handlepropmts1(){
-//   {patientData.isFoodEaten? propmt("patintData.firstname ate took meal"): prompt("patintData.firstname did not take food")
-//   }
-// }
-// function handlepropmts1(){
-//   {patientData.isMedicineTaken? propmt("patintData.firstname  took Medicine"): prompt("patintData.firstname did not take Medicine")
-  
-//   }
-// }
+  //  adding prompts
+
+  // function handlepropmts1(){
+  //   {patientData.isFoodEaten? propmt("patintData.firstname ate took meal"): prompt("patintData.firstname did not take food")
+
+  //   }
+  // }
+
+  // function handlepropmts1(){
+  //   {patientData.isMedicineTaken? propmt("patintData.firstname  took Medicine"): prompt("patintData.firstname did not take Medicine")
+
+  //   }
+  // }
+
+
+
   // function for the calendar
 
   function handleCalendarInput(date) {
     setTableObject({ ...formObject, date })
   }
 
- 
+
   function handleTableChange(event) {
     event.preventDefault();
     API.updatePatientById(
@@ -85,9 +91,6 @@ function LogBook(props) {
     })
 
   }
-
-
-
 
   return (
     <div className="container" >
@@ -157,14 +160,6 @@ function LogBook(props) {
             </tbody>
 
 
-            {/* <button class="btn waves-effect waves-light" type="submit" name="action"    >Submit    
-    <i class="material-icons right">send</i>
-  </button> */}
-            {/* <FormBtn
-                handleTableChange={handleTableChange}>
-
-                  UbdateProfile
-              </FormBtn> */}
           </table    >
           <button class="btn waves-effect dangerous" onClick={handleTableChange}>Submit</button>
 

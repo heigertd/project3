@@ -69,7 +69,7 @@ function Login(props) {
   const handleLogoutClick = event=>{
     API.logout().then(res=>{
         props.logoutHandle();
-    //    history.push.current('/')
+      //  history.push.current('/')
     })
 }
 
