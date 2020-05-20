@@ -17,6 +17,7 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
   const [login, setLogin] = useState(false);
+  const [userOption, setUserOption] = useState('');
   let history = useHistory();
   // when axios
 
@@ -25,10 +26,25 @@ function Login(props) {
   // }
 
 
+
   const options = [
     'Manager', 'Employee'
   ];
   const defaultOption = options[0];
+
+ function _onSelect (option) {
+    console.log('You selected ', option.label)
+ 
+    if (option.label==="Manager"){
+      setUserOption(true)
+
+
+    } else if (option.label==="Employee"){ 
+      setUserOption(false)
+    }
+  }
+
+
 
   const handleLogin = () => {
 
@@ -78,7 +94,7 @@ function Login(props) {
   }
 
   const handleSignup = () => {
-    API.signup({ username, password, code }).then(data => console.log(data))
+    API.signup({ username, password, isAdmin:userOption }).then(data => console.log(data))
   }
 
   return (
@@ -95,7 +111,7 @@ function Login(props) {
             <input id="create-password" type="password" placeholder="enter your password" onChange={(e) => setPassword(e.target.value)} /><div />
             {login ? "" : <>
 
-              <Dropdown options={options} value={defaultOption} placeholder="Select an option" />;
+              <Dropdown options={options} value={defaultOption} placeholder="Select an option" onChange = {_onSelect} />;
           <div /></>}
 
             <button onClick={login ? handleLogin : handleSignup} id="create-acc">{login ? "Log In" : "Submit"}</button>
