@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// import "../layout/style.css";
+import "../layout/style.css";
 
 import { Link, useHistory } from "react-router-dom";
 //
