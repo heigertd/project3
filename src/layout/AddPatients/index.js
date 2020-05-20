@@ -7,6 +7,7 @@ import "./style.css"
 
 
 function AddPatient(props) {
+console.log("addpationsprops.currentuser",props.currentUser)
   const [patientState, setPatientState] = useState({
     firstname: '',
     lastname: '',
@@ -24,6 +25,7 @@ function AddPatient(props) {
   const history = useHistory();
   useEffect(() => {
     if (!props.currentUser) {
+      // getcurrentUser from the local storage
       history.push('/login')
     }
 
@@ -57,7 +59,7 @@ function AddPatient(props) {
 
       })
       history.push("/patient")
-    })
+    }).catch(err=>console.log(err))
 
   }
   return (

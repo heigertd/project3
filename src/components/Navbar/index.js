@@ -17,7 +17,7 @@ export default (props) => {
 <div>
         <ul className="navbar-nav">
           <li className="nav-item">
-          {props.currentUser.user? <h3>Welcome, {props.currentUser.user.username}</h3>:""}
+          {props.currentUser && props.currentUser.user? <h3>Welcome, {props.currentUser.user.username}</h3>:" login"}
          
           </li>
           <li className="nav-item">
@@ -36,7 +36,8 @@ export default (props) => {
             Logbook
             </Link>:""}
           </li>
-      {props.currentUser.user && props.currentUser.user.isAdmin ?
+      {props.currentUser &&props.currentUser.user && props.currentUser.user.isAdmin ?
+      
         <>
           <li className="nav-item">
           <Link
@@ -66,7 +67,7 @@ export default (props) => {
             </Link>:""}
           </li>
           <li className="nav-item">
-          {props.currentUser.user? <Link
+          {props.currentUser &&props.currentUser.user? <Link
               to="/manager"
               className={window.location.pathname === "/manager" ? "nav-link active" : "nav-link"}
 
@@ -81,7 +82,7 @@ export default (props) => {
             </Link>
           </> : ""}
 
-          {props.currentUser.user ? <li className="nav-item">
+          {props.currentUser &&props.currentUser.user ? <li className="nav-item">
           <Link
               to="/"
               className="nav-link">

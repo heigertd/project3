@@ -40,7 +40,7 @@ class App extends React.Component {
    const currentUser= JSON.parse(localStorage.getItem('currentUser') )
 this.setState({
   
-  // user:currentUser.user
+  user:currentUser.user
  
 })
 
@@ -77,7 +77,7 @@ this.setState({
         <Route exact path="/patient" component={Patient} />
         <Route exact path="/manager" component={AddManager}/>
         <Route exact path="/employee" component={AddEmployee}/>
-        <Route exact path="/newEntry" component={AddPatient}/>
+        <Route exact path="/newEntry" component={() => <AddPatient currentUser={this.state.user}  />} />
         <Route exact path="/patient/:id" component={LogBook} />
         <Route exact path="/LogBook/:id" component={Employee} />
         {/* <Route exact path="/patient:id" component={Patient} /> */}
