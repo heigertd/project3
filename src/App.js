@@ -37,7 +37,7 @@ class App extends React.Component {
     console.log("componentDidMount")
    const currentUser= JSON.parse(localStorage.getItem('currentUser') )
 this.setState({
-  user:currentUser.user
+  // user:currentUser.user
 })
 
 
