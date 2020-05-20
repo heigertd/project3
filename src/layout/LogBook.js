@@ -47,10 +47,8 @@ function LogBook(props) {
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
-    console.log(event)
     const { name, value } = event.target;
     setTableObject({ ...formObject, [name]: value })
-    console.log(formObject)
   };
   //  adding prompts
 
@@ -71,16 +69,12 @@ function LogBook(props) {
   // function for the calendar
 
   function handleCalendarInput(date) {
-    console.log(date);
     setTableObject({ ...formObject, date })
   }
 
 
   function handleTableChange(event) {
-    console.log("hello", patientData.id)
     event.preventDefault();
-    // if (formObject.firstname) {
-    // axios.put(`http://localhost:8080/api/patient/${patientData.id}`, formObject)
     API.updatePatientById(
       formObject, patientData.id
     )
@@ -110,24 +104,18 @@ function LogBook(props) {
                 <th>value</th>
                 <th> update</th>
               </tr>
-
-
             </thead>
 
             <tbody>
               <tr>
                 <td>First Name</td>
-
                 <td>{patientData.firstname}</td>
                 <td><input name="firstname" value={formObject.firstname} onChange={handleInputChange}></input></td>
-
-
               </tr>
               <tr>
                 <td>Last Name</td>
                 <td>{patientData.lastname}</td>
                 <td><input name="lastname" value={formObject.lastname} onChange={handleInputChange} ></input></td>
-
               </tr>
               <tr>
                 <td>Age</td>
@@ -148,7 +136,6 @@ function LogBook(props) {
 
               </tr>
               <tr>
-
 
                 <td>
                   <td>Did the patient eat Food</td>
