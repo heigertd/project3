@@ -15,7 +15,7 @@ export default {
   },
   createPatient: function (patientData) {
     console.log("createPatient")
-    return axios.post(`${BASE_URL}/newEntry`, patientData, { withCredentials: true })
+    return axios.post(`http://localhost:8080/api/createPatient`, patientData, { withCredentials: true })
   },
   createManager: function (managerData) {
     return axios.post(`${BASE_URL}/api/manager`, managerData, { withCredentials: true })

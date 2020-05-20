@@ -9,6 +9,7 @@ import Calendar from "react-calendar"
 // import { FormBtn } from '../components/Form'
 import axios from "axios";
 import { Link } from 'react-router-dom'
+import { render } from "@testing-library/react";
 
 function LogBook(props) {
   // created the use state to update the table
@@ -46,26 +47,28 @@ function LogBook(props) {
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
-    console.log(event)
     const { name, value } = event.target;
     setTableObject({ ...formObject, [name]: value })
-    console.log(formObject)
   };
-
-
+//  adding prompts
+// function handlepropmts1(){
+//   {patientData.isFoodEaten? propmt("patintData.firstname ate took meal"): prompt("patintData.firstname did not take food")
+//   }
+// }
+// function handlepropmts1(){
+//   {patientData.isMedicineTaken? propmt("patintData.firstname  took Medicine"): prompt("patintData.firstname did not take Medicine")
+  
+//   }
+// }
   // function for the calendar
 
   function handleCalendarInput(date) {
-    console.log(date);
     setTableObject({ ...formObject, date })
   }
 
  
   function handleTableChange(event) {
-    console.log("hello", patientData.id)
     event.preventDefault();
-    // if (formObject.firstname) {
-    // axios.put(`http://localhost:8080/api/patient/${patientData.id}`, formObject)
     API.updatePatientById(
       formObject, patientData.id
     )
@@ -87,9 +90,6 @@ function LogBook(props) {
 
 
   return (
-
-
-
     <div className="container" >
       <div className="row">
         <div className="col s6">
@@ -100,28 +100,19 @@ function LogBook(props) {
                 <th> Item</th>
                 <th>value</th>
                 <th> update</th>
-
-
-
               </tr>
-
-
             </thead>
 
             <tbody>
               <tr>
                 <td>First Name</td>
-
                 <td>{patientData.firstname}</td>
                 <td><input name="firstname" value={formObject.firstname} onChange={handleInputChange}></input></td>
-
-
               </tr>
               <tr>
                 <td>Last Name</td>
                 <td>{patientData.lastname}</td>
                 <td><input name="lastname" value={formObject.lastname} onChange={handleInputChange} ></input></td>
-
               </tr>
               <tr>
                 <td>Age</td>
@@ -142,14 +133,6 @@ function LogBook(props) {
 
               </tr>
               <tr>
-                {/* <td>Food</td>
-                  <td>{patientData.isFoodEaten}</td>
-                  <td>
-                    <label><input name="isFoodEaten" value={(checked)=>formObject.isFoodEaten} class="with-gap" name="group3" type="radio" checked /><span>True</span></label>
-                  </td>
-                  <td>
-                    <label><input  name="isFoodEaten" value={formObject.isFoodEaten} class="with-gap" name="group3" type="radio" checked /><span>False</span></label>
-                  </td> */}
 
                 <td>
                   <td>Did the patient eat Food</td>
@@ -195,7 +178,7 @@ function LogBook(props) {
           <table>
             <thead>
               <tr>
-                <th>Logs</th>
+                <th></th>
                 <th>5/11/2020</th>
               </tr>
             </thead>
