@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// import "../layout/style.css";
+import "../layout/style.css";
 
 import { Link, useHistory } from "react-router-dom";
 //
@@ -69,7 +69,7 @@ function Login(props) {
   const handleLogoutClick = event=>{
     API.logout().then(res=>{
         props.logoutHandle();
-    //    history.push.current('/')
+      //  history.push.current('/')
     })
 }
 
