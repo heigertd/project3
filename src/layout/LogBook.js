@@ -6,16 +6,15 @@ import Food from './Food'
 import Container from '../components/Container/Container'
 import Calendar from "react-calendar"
 import axios from "axios";
-// import MyCalendar from '../components/MyCalendar/MyCalendar'
 import { Link } from 'react-router-dom'
 import { render } from "@testing-library/react";
-// import MyComponent from '../components/MyComponent/MyComponent';
 function LogBook(props) {
   // created the use state to update the table
   const [date, setDate] = useState('')
   const [formObject, setTableObject] = useState({})
   const [patientData, setPatientData] = useState({})
-  const [getPatientLog, setPatientLog] = useState({})
+
+
   const params = useParams()
   console.log(props.data)
   // using the api a data is collected from the database by id for a single patient
@@ -23,9 +22,7 @@ function LogBook(props) {
     API.getPatientData(params.id).then(res => {
       setPatientData(res.data)
     })
-    API.getPatientLog(params.id).then(res => {
-      setPatientLog(res.data)
-    })
+
   }, [])
 
   function ubdatePatient() {
@@ -65,27 +62,9 @@ function LogBook(props) {
   function handleCheckboxf() {
     setTableObject({
       ...formObject,
-  isMedicine: !formObject.isMedicine
+      isMedicine: !formObject.isMedicine
     })
   }
-  // The logbook goes here
-  // function ubdatePatient() {
-  //   API.updatePatientById(formObject, params.id).then(res => {
-  //     console.log(res.data)
-  //     setPatientData(res.data)
-  //   })
-  //     .catch(err => console.log(err));
-  // }
-
-  function handleLogChange(event) {
-    event.preventDefault();
-    API.updatePatientLog(
-      formObject, getPatientLog.id
-    )
-      .then(res => ubdatePatient())
-      .catch(err => console.log(err));
-
-  };
 
   return (
     <div className="container" >
@@ -103,7 +82,9 @@ function LogBook(props) {
               <tr>
                 <th> Item</th>
                 <th>value</th>
-                <th> update</th>
+
+                <th> LoggedBy:{props.data ? props.data.firstname : ""}</th>
+
               </tr>
             </thead>
 
@@ -157,15 +138,16 @@ function LogBook(props) {
               <tr >
                 <td>Doctors Appointment</td>
                 <td>{patientData.date}</td>
-                <td><Calendar /></td>
-                {/* <td><Calendar name="calendar" onChange={handleCalendarInput} /></td> */}
+                <td><Calendar name="calendar" onChange={handleCalendarInput} /></td>
 
               </tr>
-              <td>
-                <label>
-                  <textarea name="address" value={formObject.address} onChange={handleInputChange} />
-                </label>
-              </td>
+              <tr>
+                <td>PatientReview</td><td>
+                  <label>
+                    <textarea name="address" value={formObject.address} onChange={handleInputChange} />
+                  </label>
+                </td>
+              </tr>
             </tbody>
           </table    >
           <button class="btn waves-effect dangerous" onClick={handleTableChange}>Submit</button>
@@ -174,39 +156,7 @@ function LogBook(props) {
             <button class="btn waves-effect dangerous">go back</button>
           </Link> </span>
         </div>
-        <Container className="col s6" fluid>
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>
-                  <td><Calendar name="calendar" onChange={handleCalendarInput} /></td></th>
-              </tr>
-            </thead>
 
-            <tbody>
-              <tr>
-                <td>Item1</td>
-                <td>filler</td>
-                <td>filler</td>
-              </tr>
-              <td>Date</td>
-              <td> <td><Calendar name="calendar" onChange={handleCalendarInput} /></td></td>
-              <tr>
-                <td>Picture</td>
-                <td>some link</td>
-              </tr>
-              <tr>
-                <td>Name</td>
-                <td>{getPatientLog.name}</td>
-              </tr>
-              <td>Status of the patient</td>
-              <td>{getPatientLog.status}</td>
-            </tbody>
-            <td>LoggedBy</td>
-            <td>{getPatientLog.loggedBy}</td>
-          </table>
-        </Container>
       </div>
 
 

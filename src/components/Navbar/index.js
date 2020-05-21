@@ -41,11 +41,11 @@ export default (props) => {
                     Manager
               </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/api/employee">
                     AddEmployee
               </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link to="/newEntry">
                     Addpatient
@@ -75,7 +75,11 @@ export default (props) => {
                 </div>}
             </div>
 
-            : ''}
+            : <li className="nav-item">
+            <Link to="/" className="nav-link">
+              Log Out
+        </Link>
+          </li>}
 
         </ul>
       </div>

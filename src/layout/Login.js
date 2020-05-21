@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-
 import "../layout/style.css";
-
 import { Link, useHistory } from "react-router-dom";
-//
-// import LogInBtn from '../LogInBtn';
 import API from "../utils/API";
 
 import "../components/LogInBtn/style.css";
@@ -17,15 +13,9 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
   const [login, setLogin] = useState(false);
+  const [logout, setLogout] = useState(false);
   const [userOption, setUserOption] = useState(false);
   let history = useHistory();
-  // when axios
-
-  // const handledropDown(props){
-
-  // }
-
-
 
   const options = [
     'Manager', 'Employee'
@@ -68,8 +58,8 @@ function Login(props) {
   }
   const handleLogoutClick = event => {
     API.logout().then(res => {
-      props.logoutHandle();
-      //  history.push.current('/')
+      props.setLogout();
+       history.push.current('/')
     })
   }
 
@@ -100,7 +90,7 @@ function Login(props) {
 
             <button onClick={login ? handleLogin : handleSignup} id="create-acc">{login ? "Log In" : "Submit"}</button>
 
-            <button onClick={handleLogoutClick}>logout!</button>
+            {/* <button onClick={handleLogoutClick}>logout!</button> */}
 
             {login ? <p class="message">Not registered?
             <a onClick={() => setLogin(false)} href="#">
