@@ -1,11 +1,13 @@
-import React  from './node_modules/react';
-import Moment from './node_modules/react-moment';
- 
-export default class MyComponent extends React.Component {
+import React from 'react';
+import Moment from 'react-moment';
+
+
+ class MyComponent extends React.Component {
     render() {
         return (
-            const dateToFormat = '1976-04-19T12:59-0500';
-            <Moment>{dateToFormat}</Moment>
+            
+            <Moment> format="YYYY/MM/DD">{this.props.dateToFormat}</Moment>
         );
     }
 }
+// export default MyComponent;

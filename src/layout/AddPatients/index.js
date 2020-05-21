@@ -7,7 +7,7 @@ import "./style.css"
 
 
 function AddPatient(props) {
-console.log("addpationsprops.currentuser",props.currentUser)
+  console.log("addpationsprops.currentuser", props.currentUser)
   const [patientState, setPatientState] = useState({
     firstname: '',
     lastname: '',
@@ -17,8 +17,8 @@ console.log("addpationsprops.currentuser",props.currentUser)
     address: '',
     doctor_appointment: '',
     isMedicine: '',
-    isFoodEaten:'',
-    patientReview:''
+    isFoodEaten: '',
+    patientReview: ''
 
 
   })
@@ -53,13 +53,13 @@ console.log("addpationsprops.currentuser",props.currentUser)
         address: '',
         doctor_appointment: '',
         isMedicine: '',
-        isFoodEaten:'',
-        patientReview:''
+        isFoodEaten: '',
+        patientReview: ''
 
 
       })
       history.push("/patient")
-    }).catch(err=>console.log(err))
+    }).catch(err => console.log(err))
 
   }
   return (

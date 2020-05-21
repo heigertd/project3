@@ -1,12 +1,9 @@
 import React from 'react';
 
 function Secound({ patientData, setActivePatient, goToLogbook }) {
-  console.log(patientData)
   return (
 
     <>
-
-
 
       <div class="col s12 m6 l4">
         <div class="card" onClick={() => goToLogbook([patientData])}>

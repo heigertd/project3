@@ -32,14 +32,14 @@ function Login(props) {
   ];
   const defaultOption = options[0];
 
- function _onSelect (option) {
+  function _onSelect(option) {
     console.log('You selected ', option.label)
- 
-    if (option.label==="Manager"){
+
+    if (option.label === "Manager") {
       setUserOption(true)
 
 
-    } else if (option.label==="Employee"){ 
+    } else if (option.label === "Employee") {
       setUserOption(false)
     }
   }
@@ -66,26 +66,26 @@ function Login(props) {
       }
     })
   }
-  const handleLogoutClick = event=>{
-    API.logout().then(res=>{
-        props.logoutHandle();
+  const handleLogoutClick = event => {
+    API.logout().then(res => {
+      props.logoutHandle();
       //  history.push.current('/')
     })
-}
+  }
 
   const handleSignup = () => {
-    API.signup({ username, password, isAdmin:userOption }).then(data => console.log(data))
-    console.log("userOption",userOption)
+    API.signup({ username, password, isAdmin: userOption }).then(data => console.log(data))
+    console.log("userOption", userOption)
 
   }
 
   return (
 
-    <div class="login-page container">
+    <div className="login-page container">
       <div className="row">
 
         <div className='col s12'>
-          <div class="register-form">
+          <div className="register-form">
             <h2>{login ? "Log In" : "Sign Up"}</h2>
             <div>
               <input id="create-name" type="text" placeholder="enter your name" onChange={(e) => setUsername(e.target.value)} />
@@ -93,21 +93,19 @@ function Login(props) {
             <input id="create-password" type="password" placeholder="enter your password" onChange={(e) => setPassword(e.target.value)} /><div />
             {login ? "" : <>
 
-              <Dropdown options={options} value={defaultOption} placeholder="Select an option" onChange = {_onSelect} />;
-          <div /></>}
+              <Dropdown options={options} value={defaultOption} placeholder="Select an option" onChange={_onSelect} />
+              <div /></>}
 
-       
+
 
             <button onClick={login ? handleLogin : handleSignup} id="create-acc">{login ? "Log In" : "Submit"}</button>
 
-             <button onClick={handleLogoutClick}>logout!</button>
+            <button onClick={handleLogoutClick}>logout!</button>
 
             {login ? <p class="message">Not registered?
             <a onClick={() => setLogin(false)} href="#">
 
-                Create an account</a></p> : <p class="message">Already registered? <a onClick={() => setLogin(true)} href="#">Sign In</a>  </p>
-
-            }
+                Create an account</a></p> : <p className="message">Already registered? <a onClick={() => setLogin(true)} href="#">Sign In</a>  </p>}
           </div>
         </div>
 
