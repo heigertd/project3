@@ -4,7 +4,8 @@ const BASE_URL = "http://localhost:8080"
 
 
 export default {
-  getPatientLog: (id) => axios.get(`${BASE_URL}/patient/${id}`),
+  getPatientData: (id) => axios.get(`${BASE_URL}/patient/${id}`),
+  getPatientLog: (id) => axios.get(`${BASE_URL}/log/${id}`),
   getAllPatients: function () {
     console.log("getallpatientsrunning")
     return axios.get(`${BASE_URL}/patients`)
@@ -29,8 +30,8 @@ export default {
 
 
   // creating a route that appdates the patients ifo
-  updatePatientById: (data, id) => {
-    console.log(data, id)
+  updatePatientById: (data,id) => {
+
 
     return axios.put(`${BASE_URL}/api/patient/${id}`, data)
   },

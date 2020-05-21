@@ -10,33 +10,30 @@ import Calendar from "react-calendar"
 import axios from "axios";
 import { Link } from 'react-router-dom'
 import { render } from "@testing-library/react";
-
+import moment from "moment";
 function LogBook(props) {
   // created the use state to update the table
 
-
   const [date, setDate] = useState('')
-  const [formObject, setTableObject] = useState({
-    firstname: '',
-    isFoodEaten: false
-  })
+  const [formObject, setTableObject] = useState({})
   const [patientData, setPatientData] = useState({})
-
+  const [getPatientLog, setPatientLog] = useState({})
   const params = useParams()
   console.log(props.data)
   // using the api a data is collected from the database by id for a single patient
   useEffect(() => {
-
-    API.getPatientLog(params.id).then(res => {
+    API.getPatientData(params.id).then(res => {
       console.log(res.data)
       setPatientData(res.data)
-
+    })
+    API.getPatientLog(params.id).then(res=>{
+      console.log(res.data)
+      setPatientLog(res.data)
     })
   }, [])
 
-
   function ubdatePatient() {
-    API.updatePatientById(formObject).then(res => {
+    API.updatePatientById(formObject,params.id).then(res => {
       console.log(res.data)
       setPatientData(res.data)
     })
@@ -92,10 +89,37 @@ function LogBook(props) {
 
   }
 
+// The logbook goes here
+function ubdatePatient() {
+  API.updatePatientById(formObject,params.id).then(res => {
+    console.log(res.data)
+    setPatientData(res.data)
+  })
+    .catch(err => console.log(err));
+}
+
+function handleLogChange(event) {
+  event.preventDefault();
+  API.updatePatientLog(
+    formObject, getPatientLog.id
+  )
+    .then(res => ubdatePatient())
+    .catch(err => console.log(err));
+
+};
+
+
+
+
   return (
     <div className="container" >
       <div className="row">
-        <div className="col s6">
+        <div className="col s4">
+          {patientData.isMedicine ? "" :<h3>Patient has to take medicine!</h3>}
+          {patientData.isFoodEaten ? "" : <h3>Patient has to eat food!</h3>}
+          {patientData.doctorAppointment ? "" : <h3>Patient has to see the doctor!</h3>}
+        </div>
+        <div className="col s8">
           {/* <table class="striped"> */}
           <table striped bordered hover variant="dark">
             <thead>
@@ -131,7 +155,7 @@ function LogBook(props) {
               </tr>
               <tr>
                 <td>Phone</td>
-                <td>{patientData.phone_number}</td>
+                <td>{patientData.phone_no}</td>
                 <td><input name="phnoe_number " value={formObject.phone_number} onChange={handleInputChange}     ></input></td>
 
               </tr>
@@ -182,17 +206,23 @@ function LogBook(props) {
               <tr>
                 <td>Item1</td>
                 <td>filler</td>
+                <td>filler</td>
               </tr>
+              <td>Date</td>
+                <td>{getdate()}</td>
               <tr>
                 <td>Picture</td>
                 <td>some link</td>
               </tr>
               <tr>
-                <td>Jonathan</td>
-                <td>Lollipop</td>
-                <td>$7.00</td>
+                <td>Name</td>
+                <td>{getPatientLog.name}</td>
               </tr>
+              <td>Status of the patient</td>
+                <td>{getPatientLog.status}</td>
             </tbody>
+                    <td>LoggedBy</td>
+                <td>{getPatientLog.loggedBy}</td>
           </table>
         </Container>
       </div>
