@@ -38,14 +38,15 @@ class App extends React.Component {
   componentDidMount() {
     console.log("componentDidMount")
    const currentUser= JSON.parse(localStorage.getItem('currentUser') )
-this.setState({
+if(currentUser){
+  this.setState({
 
   
   user:currentUser.user
 
 
 })
-
+}
 
   //  const currentUser= localStorage.getItem('currentUser') ? this.setState(JSON.parse(localStorage.getItem('currentUser'))) :
    

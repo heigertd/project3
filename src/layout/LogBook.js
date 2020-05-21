@@ -105,16 +105,16 @@ function LogBook(props) {
 
 
 
-    <div className="container" >
+    <div className="container1" >
       <div className="row">
         <div className="col s6">
           {/* <table class="striped"> */}
           <table striped bordered hover variant="dark">
             <thead>
-              <tr>
-                <th> Item</th>
-                <th>value</th>
-                <th> update</th>
+              <tr className="table1">
+                <th className="col-1"> Item</th>
+                <th className="col-2">value</th>
+                <th className="col-3"> update         .</th>
 
 
 
@@ -123,7 +123,7 @@ function LogBook(props) {
 
             </thead>
 
-            <tbody>
+            <tbody className="TableBody">
               <tr>
                 <td>First Name</td>
 
