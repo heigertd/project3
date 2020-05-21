@@ -98,7 +98,7 @@ function Login(props) {
                     placeholder="Select an option"
                     onChange={_onSelect}
                   />
-                  ;
+                  
                   <div />
                 </>
               )}
@@ -110,7 +110,7 @@ function Login(props) {
                 {login ? "Log In" : "Submit"}
               </button>
 
-              <button onClick={handleLogoutClick}>logout!</button>
+
 
               {login ? (
                 <p class="message">
