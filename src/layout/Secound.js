@@ -9,7 +9,9 @@ function Secound({ patientData, setActivePatient, goToLogbook }) {
         <div class="card" onClick={() => goToLogbook([patientData])}>
           <h5> <span class="card-title">{patientData.firstname} {patientData.lastname}</span></h5>
           <div class="card-image">
-            <img src={patientData.url || "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRVlwngYTvaINvzuU-SL1vWpsalNFtNId4ewMxxMUfgkjL5ou1m&usqp=CAU"} alt="old person avator" />
+            <img src={require ("./patientAvatar.jpeg")  } alt="ty" />
+
+            {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
           
           </div>
 

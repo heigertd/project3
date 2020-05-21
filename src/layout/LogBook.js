@@ -67,7 +67,10 @@ function LogBook(props) {
   }
 
   return (
-    <div className="container" >
+
+
+
+    <div className="container1" >
       <div className="row">
         <div className="col s4">
 
@@ -79,16 +82,18 @@ function LogBook(props) {
           {/* <table class="striped"> */}
           <table striped bordered hover variant="dark">
             <thead>
-              <tr>
-                <th> Item</th>
-                <th>value</th>
+              <tr className="table1">
+                <th className="col-1"> Item</th>
+                <th className="col-2">value</th>
+                <th className="col-3"> update         .</th>
+
 
                 <th> LoggedBy:{props.data ? props.data.firstname : ""}</th>
 
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className="TableBody">
               <tr>
                 <td>First Name</td>
                 <td>{patientData.firstname}</td>
