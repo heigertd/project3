@@ -1,10 +1,9 @@
 import axios from "axios";
 // import logInbtn from "../components/LogInBtn"; 
 const BASE_URL = "http://localhost:8080"
-
-
 export default {
-  getPatientLog: (id) => axios.get(`${BASE_URL}/patient/${id}`),
+  getPatientData: (id) => axios.get(`${BASE_URL}/patient/${id}`),
+  // getPatientLog: (id) => axios.get(`${BASE_URL}/log/${id}`),
   getAllPatients: function () {
     console.log("getallpatientsrunning")
     return axios.get(`${BASE_URL}/patients`)
@@ -21,17 +20,11 @@ export default {
     return axios.post(`${BASE_URL}/api/manager`, managerData, { withCredentials: true })
   },
 
-  
- 
   // login btn
   getLogInbtn: (id) =>
     axios.post(`${BASE_URL}/` + id),
-
-
   // creating a route that appdates the patients ifo
-  updatePatientById: (data, id) => {
-    console.log(data, id)
-
+  updatePatientById: (data,id) => {
     return axios.put(`${BASE_URL}/api/patient/${id}`, data)
   },
   login: (data) => axios.post(`${BASE_URL}/login`, data),
@@ -43,8 +36,6 @@ export default {
   saveChange: function (Data) {
     return axios.put(`${BASE_URL}/api/patient`, Data)
   },
-
-
   Logout: () => axios.destroy(`${BASE_URL}/api/logout`),
   getCurrentUser: () => axios.get('/api/currentuser')
 }

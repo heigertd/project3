@@ -1,12 +1,9 @@
 import React from 'react';
 
 function Secound({ patientData, setActivePatient, goToLogbook }) {
-  console.log(patientData)
   return (
 
     <>
-
-
 
       <div class="col s12 m6 l4">
         <div class="card" onClick={() => goToLogbook([patientData])}>
@@ -18,13 +15,9 @@ function Secound({ patientData, setActivePatient, goToLogbook }) {
           
           </div>
 
-          <div
-            className="card-content"
-            
-          >
+          <div className="card-content">
             <p>email - {patientData.email}</p>
             <p>phone - {patientData.phone_number}</p>
-           {/* <p>firstname-{patientData.firstname}</p> */}
           </div>
         </div>
       </div>

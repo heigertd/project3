@@ -3,24 +3,18 @@ import { useHistory } from "react-router-dom"
 import API from "../../utils/API"
 import "./style.css"
 
-
-
-
 function AddPatient(props) {
-console.log("addpationsprops.currentuser",props.currentUser)
+  console.log("addpationsprops.currentuser", props.currentUser)
   const [patientState, setPatientState] = useState({
     firstname: '',
     lastname: '',
     age: '',
-
     email: '',
     address: '',
     doctor_appointment: '',
     isMedicine: '',
-    isFoodEaten:'',
-    patientReview:''
-
-
+    isFoodEaten: '',
+    patientReview: ''
   })
   const history = useHistory();
   useEffect(() => {
@@ -48,18 +42,15 @@ console.log("addpationsprops.currentuser",props.currentUser)
         firstname: '',
         lastname: '',
         age: '',
-
         email: '',
         address: '',
         doctor_appointment: '',
         isMedicine: '',
-        isFoodEaten:'',
-        patientReview:''
-
-
+        isFoodEaten: '',
+        patientReview: ''
       })
       history.push("/patient")
-    }).catch(err=>console.log(err))
+    }).catch(err => console.log(err))
 
   }
   return (

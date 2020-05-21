@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-
 import "../layout/style.css";
-
 import { Link, useHistory } from "react-router-dom";
-//
-// import LogInBtn from '../LogInBtn';
 import API from "../utils/API";
 
 import "../components/LogInBtn/style.css";
@@ -16,24 +12,24 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
   const [login, setLogin] = useState(false);
+  const [logout, setLogout] = useState(false);
   const [userOption, setUserOption] = useState(false);
   let history = useHistory();
-  // when axios
 
-  // const handledropDown(props){
-
-  // }
-
-  const options = ["Manager", "Employee"];
+  const options = [
+    'Manager', 'Employee'
+  ];
   const defaultOption = options[0];
 
   function _onSelect(option) {
-    console.log("You selected ", option.label);
+    console.log('You selected ', option.label)
 
     if (option.label === "Manager") {
-      setUserOption(true);
+      setUserOption(true)
+
+
     } else if (option.label === "Employee") {
-      setUserOption(false);
+      setUserOption(false)
     }
   }
 
