@@ -85,10 +85,10 @@ function LogBook(props) {
               <tr className="table1">
                 <th className="col-1"> Item</th>
                 <th className="col-2">value</th>
-                <th className="col-3"> update         .</th>
+                <th className="col-3">  LoggedBy:{props.data ? props.data.firstname : ""} </th>
 
 
-                <th> LoggedBy:{props.data ? props.data.firstname : ""}</th>
+                {/* <th> LoggedBy:{props.data ? props.data.firstname : ""}</th> */}
 
               </tr>
             </thead>
