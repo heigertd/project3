@@ -8,13 +8,14 @@ function AddManager(props) {
   const [managerState, setManagerState] = useState({
     firstname: '',
     lastname:'',
-    age: ''
+    age: '',
+    email:''
 
   })
   const history = useHistory();
   useEffect(() => {
     if (!props.currentUser) {
-      history.push('/login')
+      history.push('/')
     }
 
   }, [props.currentUser])
@@ -37,7 +38,7 @@ function AddManager(props) {
         age: '',
         email:''
       })
-      history.push("/")
+      history.push("/api/manager")
     })
 
   }

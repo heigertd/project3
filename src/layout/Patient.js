@@ -4,10 +4,8 @@ import Log from './LogBook'
 import { useHistory } from "react-router-dom"
 
 export default ({ data, user, patientData }) => {
-  // const [activePatient, setActivePatient] = useState(null)
+
   const [activePatient, setActivePatient] = useState([]);
-  // const [patientData ,setPatientData]=useState([])
- 
   const userChecking = () => {
     if (user === 'Incorrect password!') {
       return <h1>  Incorrect password</h1>

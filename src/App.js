@@ -60,14 +60,14 @@ class App extends React.Component {
         <Route exact path="/logbook/:id" component={() => <LogBook data={this.state.user} />} />
         <Route exact path="/patient/:id" component={Manager} />
         <Route exact path="/patient" component={Patient} />
-        <Route exact path="/manager" component={AddManager}/>
-        <Route exact path="/employee" component={AddEmployee}/>
+        <Route exact path="/api/manager" component={AddManager}/>
+        <Route exact path="/api/employee" component={AddEmployee}/>
         <Route exact path="/newEntry" component={() => <AddPatient currentUser={this.state.user}  />} />
-        <Route exact path="/patient/:id" component={LogBook} />
-        <Route exact path="/LogBook/:id" component={Employee} />
+        {/* <Route exact path="/patient/:id" component={LogBook} /> */}
+        {/* <Route exact path="/apiLogbook/:id" component={Employee} /> */}
         <Route exact path="/patient" component={() => <Patient data={this.state.data} user={this.state.user} />} />
 
-        <Footer />
+        <Footer/>
 </Router> 
      
 

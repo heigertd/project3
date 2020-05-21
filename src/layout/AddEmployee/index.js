@@ -6,7 +6,8 @@ import API from "../../utils/API"
 
 function AddEmployee(props) {
   const [employeeState, setEmployeeState] = useState({
-    name: '',
+    firstname: '',
+    lastname:'',
     age: '',
     phone_no: '',
     email: '',
@@ -23,7 +24,7 @@ function AddEmployee(props) {
   const history = useHistory();
   useEffect(() => {
     if (!props.currentUser) {
-      history.push('/login')
+      history.push('/api/employee')
     }
 
   }, [props.currentUser])
@@ -41,7 +42,8 @@ function AddEmployee(props) {
       console.log(newEmployee)
       setEmployeeState({
 
-        name: '',
+        firstname: '',
+        lastname:'',
         age: '',
         phone_no: '',
         email: '',
@@ -51,24 +53,24 @@ function AddEmployee(props) {
         start_time: '',
         end_time: ''
       })
-      history.push("/")
+      history.push("/api/employee")
     })
 
   }
   return (
-    <div className="AddEmployee">
+    <div className="addemployee">
       <h1>Register an employee</h1>
       <form class="col s12">
 
         <div class="row">
           <div class="input-field col s6">
             <input id="first_name" type="text" onChange={handleInputChange} name="firstname" value={employeeState.firstname} placeholder="name" />
-            <label for="first_name">First Name</label>
+            <label for="first_name"></label>
           </div>
           <div class="input-field col s6">
               <input id="lastname" type="text" onChange={handleInputChange} name="lastname" value={employeeState.lastname} placeholder="last_name" />
               <br />
-              <label for="lastname">Last Name</label>
+              <label for="lastname"></label>
             </div>
           </div>
 
@@ -76,58 +78,58 @@ function AddEmployee(props) {
           <div class="row">
             <div class="input-field col s6">
               <input id="age" type="text" onChange={handleInputChange} name="age" value={employeeState.age} placeholder="age" />
-              <label for="age">Age</label>
+              <label for="age"></label>
             </div>
             <div class="input-field col s6">
               <input id="phone" type="text" onChange={handleInputChange} name="phone" value={employeeState.phone} placeholder="phone" />
               <br />
-              <label for="phone">Phone_No</label>
+              <label for="phone"></label>
             </div>
           </div>
           
             <div class="row">
               <div class="input-field col s6">
                 <input id="age" type="text" onChange={handleInputChange} name="age" value={employeeState.age} placeholder="age" />
-                <label for="age">Age</label>
+                <label for="age"></label>
               </div>
               <div class="input-field col s6">
                 <input id="phone" type="text" onChange={handleInputChange} name="phone" value={employeeState.phone} placeholder="phone" />
                 <br />
-                <label for="phone">Phone_No</label>
+                <label for="phone"></label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
                 <input id="first_name" type="text" onChange={handleInputChange} name="start_time" value={employeeState.name} placeholder="name" />
-                <label for="start_time">Start Time</label>
+                <label for="start_time"></label>
               </div>
               <div class="input-field col s6">
                 <input id="end_time" type="text" onChange={handleInputChange} name="end_time" value={employeeState.end_time} placeholder="team" />
                 <br />
-                <label for="end_time">End Time</label>
+                <label for="end_time"></label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
                 <input id="email" type="text" onChange={handleInputChange} name="email" value={employeeState.email} placeholder="name" />
-                <label for="email">Email</label>
+                <label for="email"></label>
               </div>
               <div class="input-field col s6">
                 <input id="last_name" type="text" onChange={handleInputChange} name="hireDate" value={employeeState.hiredate} placeholder="Hiredate" />
                 <br />
-                <label for="last_name">Hired  Date </label>
+                <label for="last_name"> </label>
               </div>
             </div>
 
             <div class="row"></div>
             <div class="input-field col s6">
               <input id="salary" type="text" onChange={handleInputChange} name="salary" value={employeeState.salary} placeholder="name" />
-              <label for="salary">Salary</label>
+              <label for="salary"></label>
             </div>
             <div class="input-field col s6">
               <input id="bonus" type="text" onChange={handleInputChange} name="bonus" value={employeeState.bonus} placeholder="team" />
               <br />
-              <label for="bonus">Bonus</label>
+              <label for="bonus"></label>
             </div>
             <button onClick={handleFormSubmit}>Add Employee!</button>
       </form>
