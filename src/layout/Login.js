@@ -53,9 +53,9 @@ function Login(props) {
     });
   };
   const handleLogoutClick = (event) => {
-    API.logout().then((res) => {
-      props.logoutHandle();
-      //    history.push.current('/')
+    API.Logout().then((res) => {
+     setLogout();
+         history.push.current('/')
     });
   };
 
@@ -110,7 +110,7 @@ function Login(props) {
                 {login ? "Log In" : "Submit"}
               </button>
 
-
+              
 
               {login ? (
                 <p class="message">
@@ -125,7 +125,14 @@ function Login(props) {
                   <a onClick={() => setLogin(true)} href="#">
                     Log In
                   </a>{" "}
+                  <button
+                onClick={logout ? handleLogoutClick : ""}
+                id="create-acc"
+              >
+                log out
+              </button>
                 </p>
+                
               )}
             </div>
           </div>

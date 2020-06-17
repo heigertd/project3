@@ -22,22 +22,30 @@ export default (props) => {
             </Link>
         </li> */}
 
-              {/* <li className='nav-item'>
+              <li className='nav-item'>
           <Link to="/patients" className="nav-link">
           
             </Link>
-        </li> */}
-            </> : <li className='nav-item'>
-              <Link to="/login" className={window.location.pathname === "/login" ? "nav-link active" : "nav-link"}>
-                Login
-            </Link>
-            </li>}
+        </li>
+        
+            </> : 
+
+           ""
+            
+            
+           
+            
+            
+            }
 
           {props.currentUser.user && props.currentUser.user.isAdmin ?
             <div>
+                <>
               <div>
+                
+             
                 <li className="nav-item">
-                  <Link to="/patients" className="nav-link">
+                  <Link to="/patient" className="nav-link">
                     Manager
               </Link>
                 </li>
@@ -52,40 +60,35 @@ export default (props) => {
               </Link>
                 </li>
               </div>
-              {props.currentUser.user ?
-                <div>
+           
+              
                   <li className="nav-item">
-                    <Link to="/" className="nav-link">
+                    <Link to="/login" className="nav-link">
                       Log Out
                 </Link>
                   </li>
-                </div>
-                :
+                </>
+              
                 <div>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link to="/" className="nav-link">
                       Login
               </Link>
-                  </li>
-                  <li className="nav-item">
+                  </li> */}
+                  {/* <li className="nav-item">
                     <Link to="signup" className="nav-link">
                       Sign Up
               </Link>
-                  </li>
-                </div>}
+                  </li> */}
+                </div>
             </div>
 
-            : <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Log Out
-        </Link>
-          </li>}
+            : ""}
 
         </ul>
       </div>
     </nav>
   )
 }
-
 
 
