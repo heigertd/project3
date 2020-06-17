@@ -17,6 +17,7 @@ import Manager from './layout/Manager';
 import AddManager from './layout/AddManager';
 import AddPatient from './layout/AddPatients';
 import AddEmployee from './layout/AddEmployee';
+import Logout from "./layout/Logout";
 
 class App extends React.Component {
   state = { data:{} , user: {firstname: 'devin'}}
@@ -59,6 +60,7 @@ class App extends React.Component {
         <Route exact path={[ "/","/login"]} component={() => <Login isLogedin={this.isLogedin} />} />
         <Route exact path="/logbook/:id" component={() => <LogBook data={this.state.user} />} />
         <Route exact path="/patient/:id" component={Manager} />
+        <Route exact path="/api/logout" component={Logout} />
         <Route exact path="/patient" component={Patient} />
         <Route exact path="/api/manager" component={AddManager}/>
         <Route exact path="/api/employee" component={AddEmployee}/>
